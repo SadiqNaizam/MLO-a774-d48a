@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 export default {
-	darkMode: ["class"],
+	// darkMode: ["class"], // Removed as PRD does not specify dark mode
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -52,22 +53,23 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+        // PRD specific color mappings
+        sidebar: 'hsl(var(--sidebar-bg))', // PRD: sidebar color #E9ECEF
+        accentGreen: 'hsl(var(--accent-green))', // PRD: accentGreen #0AB39C
+        // PRD chart colors
+        chart1: '#B392F0',
+        chart2: '#FF682C',
+        chart3: '#23B7E5',
+        chart4: '#FFC107',
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius)', // 0.5rem
+				md: 'calc(var(--radius) - 2px)', // 0.375rem (rounded-md)
+				sm: 'calc(var(--radius) - 4px)' // 0.25rem (rounded)
 			},
+      fontFamily: {
+        sans: ['Inter', ...fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
